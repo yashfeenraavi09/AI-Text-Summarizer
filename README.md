@@ -10,6 +10,13 @@ This is an AI-powered text summarization API built using FastAPI and deployed on
 ## API Endpoint
 POST /summarize
 
+## Tech Stack
+FastAPI
+Python
+Google Gemini API
+Docker
+Cloud Run
+
 ## Example Request
 ```json
 {
