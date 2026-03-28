@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SummarizeAI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="blob-bg"></div>
+    <div class="blob-bg blob-2"></div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <i data-lucide="sparkles"></i>
+                <span>SummarizeAI</span>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Dark/Light Mode">
+                    <i data-lucide="moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Intelligent Document <span class="gradient-text">Summarization</span></h1>
+            <p>Transform lengthy texts into concise, actionable insights in seconds.</p>
+        </header>
+
+        <div class="workspace">
+            <div class="editor-section glass-panel">
+                <div class="panel-header">
+                    <h2>Input Text</h2>
+                    <div class="header-actions">
+                        <label for="file-upload" class="btn btn-secondary btn-sm" title="Upload distinct .txt files for extraction">
+                            <i data-lucide="file-text"></i>
+                            Upload File
+                        </label>
+                        <input type="file" id="file-upload" accept=".txt" style="display: none;">
+                        <button id="clear-btn" class="btn btn-icon btn-sm" title="Clear Text">
+                            <i data-lucide="trash-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <textarea id="input-text" placeholder="Paste your article, document, or text here..."></textarea>
+                
+                <div class="options-bar">
+                    <div class="input-group">
+                        <label>Length</label>
+                        <select id="length-select">
+                            <option value="Short">Short (1-2 sentences)</option>
+                            <option value="Medium" selected>Medium (2-3 sentences)</option>
+                            <option value="Long">Detailed (4-6 sentences)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Tone</label>
+                        <select id="tone-select">
+                            <option value="Professional" selected>Professional</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Bullet Points">Bullet Points</option>
+                            <option value="Academic">Academic</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="summarize-btn" class="btn btn-primary btn-full">
+                    <i data-lucide="zap"></i>
+                    <span>Generate Summary</span>
+                </button>
+            </div>
+
+            <div class="result-section glass-panel">
+                <div class="panel-header">
+                    <h2>Summary</h2>
+                    <div class="header-actions">
+                        <button id="copy-btn" class="btn btn-icon btn-sm" title="Copy to clipboard" disabled>
+                            <i data-lucide="copy"></i>
+                        </button>
+                        <button id="export-btn" class="btn btn-icon btn-sm" title="Download Text" disabled>
+                            <i data-lucide="download"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="result-container" class="result-box empty">
+                    <div class="empty-state">
+                        <i data-lucide="bot"></i>
+                        <p>Your summary will appear here</p>
+                    </div>
+                    <!-- Loader -->
+                    <div id="loader" class="loader hidden">
+                        <div class="spinner"></div>
+                        <span>Analyzing text...</span>
+                    </div>
+                    <!-- Actual Summary Text -->
+                    <div id="summary-content" class="hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <section class="history-section glass-panel">
+            <div class="panel-header">
+                <h2>Recent Summaries</h2>
+                <button id="clear-history-btn" class="btn btn-secondary btn-sm">Clear History</button>
+            </div>
+            <div id="history-container" class="history-grid">
+                <!-- History cards injected here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="static/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
